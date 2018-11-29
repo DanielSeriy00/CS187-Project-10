@@ -43,7 +43,13 @@ public class StudentArrayHeap<P, V> extends AbstractArrayHeap<P, V> {
 	@Override
 	protected void bubbleUp(int index) {
 		// TODO Auto-generated method stub
+		Entry<P, V> c = heap.get(index);
+		Entry<P, V> p = heap.get(getParentOf(index));
 		
+		if ((index > 0) && (c.getPriority().compareTo(p.getPriority()) > 0)) {
+			swap(index, getParentOf(index));
+			bubbleUp(getParentOf(index));
+		}
 	}
 
 	@Override
