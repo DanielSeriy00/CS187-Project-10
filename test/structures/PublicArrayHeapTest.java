@@ -18,7 +18,7 @@ public class PublicArrayHeapTest {
     arrayHeap = new StudentArrayHeap<String, Integer>(new StringLengthComparator());
   }
 
-  @Test(timeout = 100)
+  @Test//(timeout = 100)
   public void testBubbleUp() {
     // The comparator being used prioritizes by the length of the string
     // passed in as a priority
@@ -37,6 +37,7 @@ public class PublicArrayHeapTest {
      */
 		
     arrayHeap.add("..", 2);
+    System.out.println(arrayHeap);
     assertEquals("Peek value should be 2.", new Integer(2), arrayHeap.peek());
     assertEquals("The second element in the array should be 1.", new Integer(1), view.get(1).getValue());
 
