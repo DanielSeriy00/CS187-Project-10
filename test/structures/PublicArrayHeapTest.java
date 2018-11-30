@@ -18,7 +18,7 @@ public class PublicArrayHeapTest {
     arrayHeap = new StudentArrayHeap<String, Integer>(new StringLengthComparator());
   }
 
-  @Test//(timeout = 100)
+  @Test(timeout = 100)
   public void testBubbleUp() {
     // The comparator being used prioritizes by the length of the string
     // passed in as a priority

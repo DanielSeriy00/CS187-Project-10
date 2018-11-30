@@ -59,7 +59,6 @@ public class StudentArrayHeap<P, V> extends AbstractArrayHeap<P, V> {
 	@Override
 	protected void bubbleDown(int index) {
 		// TODO Auto-generated method stub
-		System.out.println("before swap ----> " + toString());
 		if(this.size() < 1 || index > this.size() - 1 ) {
 			return;
 		}
@@ -71,19 +70,15 @@ public class StudentArrayHeap<P, V> extends AbstractArrayHeap<P, V> {
 		Entry<P, V> p = heap.get(index);
 		Entry<P, V> lC = heap.get(getLeftChildOf(index));
 		Entry<P, V> rC = heap.get(getRightChildOf(index));
-		
-		System.out.println("p: " + index + " lc: " + getLeftChildOf(index)+ " rc: " + getRightChildOf(index)); 
-		
+				
 		if(super.comparator.compare(p.getPriority(), lC.getPriority()) < 0 ||
 				super.comparator.compare(p.getPriority(), rC.getPriority()) < 0) {
 			if(super.comparator.compare(rC.getPriority(), lC.getPriority()) < 0) {
 				swap(index, getLeftChildOf(index));
-				System.out.println("after swap ----> " + toString());
 				bubbleDown(getLeftChildOf(index));
 			}
 			else {
 				swap(index, getRightChildOf(index));
-				System.out.println("after swap ----> " + toString());
 				bubbleDown(getRightChildOf(index));
 			}
 		}
