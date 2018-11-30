@@ -7,22 +7,46 @@ import java.util.Iterator;
 
 public class MaxQueue<V> implements PriorityQueue<Integer, V> {
 
+	private StudentArrayHeap<Integer, V> queue = 
+			new StudentArrayHeap<Integer, V>(new IntegerComparator());
+	int size = 0;
+	
+	public MaxQueue<V>(){
+		queue = null;
+		int size = 0;
+	}
+	
 	@Override
-	public PriorityQueue<Integer, V> enqueue(Integer priority, V value) {
+	public PriorityQueue<Integer, V> enqueue(Integer priority, V value) 
+			throws NullPointerException {
 		// TODO Auto-generated method stub
-		return null;
+		if(priority == null || value == null) {
+			throw new NullPointerException();
+		}
+		
+		queue.add(priority, value);
+		size++;
+		
+		return (PriorityQueue<Integer, V>) queue;
 	}
 
 	@Override
-	public V dequeue() {
+	public V dequeue() throws IllegalStateException {
 		// TODO Auto-generated method stub
-		return null;
+		if(queue.isEmpty()) {
+			throw new IllegalStateException();
+		}
+		
+		V retVal = queue.peek();
+		queue.remove();
+		size--;
+		return retVal;
 	}
 
 	@Override
 	public V peek() {
 		// TODO Auto-generated method stub
-		return null;
+		return queue.peek();
 	}
 
 	@Override
@@ -40,12 +64,12 @@ public class MaxQueue<V> implements PriorityQueue<Integer, V> {
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-		return false;
+		return queue.isEmpty();
 	}
 }

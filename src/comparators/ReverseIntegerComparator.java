@@ -11,6 +11,8 @@ public class ReverseIntegerComparator implements Comparator<Integer> {
     @Override
     public int compare(Integer arg0, Integer arg1) {
             // TODO
-            return 0;
+    	if (arg0 < arg1) return 1;
+		if (arg0 > arg1) return -1;
+		return arg0.compareTo(arg1);
     }
 }
